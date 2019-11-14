@@ -1,0 +1,14 @@
+{
+    "name": "mrln-webapp",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "cypress-gui": "cypress open",
+        "cypress-headed": "cypress run --headed",
+        "cypress-tests": "cypress run"
+    },
+    "devDependencies": {
+        "@applitools/eyes-cypress": "^3.8.18",
+        "cypress": "^3.6.1"
+    }
+}
