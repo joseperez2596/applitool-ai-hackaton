@@ -1,2 +1,7 @@
+#Configuration
 node_modules
 package-lock.json
+
+#Cypress Directories
+cypress/screenshots
+cypress/videos

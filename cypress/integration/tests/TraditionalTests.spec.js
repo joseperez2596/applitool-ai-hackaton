@@ -1,4 +1,5 @@
 import * as LoginActions from '../actions/LoginActions';
+import * as DashboardActions from '../actions/DashboardActions';
 
 const TestText = 'test';
 
@@ -26,6 +27,14 @@ describe('Traditional Test Suite', () => {
     });
     it('Successful Login', () => {
       LoginActions.login(TestText, TestText);
+      DashboardActions.checkDashboard();
+    });
+  });
+
+  describe('Table Sort Test ', () => {
+    it('Ascending amounts ordering', () => {
+      /* This cannot be automated because cypress
+        does not properly handle iframes */
     });
   });
 });
