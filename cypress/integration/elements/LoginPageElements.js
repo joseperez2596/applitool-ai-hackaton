@@ -29,4 +29,4 @@ export const LoginPageElements = {
     TwitterImageSelector,
     FacebookImageSelector,
     LinkedinImageSelector
-}
+};
