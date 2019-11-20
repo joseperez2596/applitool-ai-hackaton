@@ -5,3 +5,6 @@ export function checkDashboard() {
     .should('be.visible');
 }
 
+export function clickCompareExpensesLink() {
+  cy.get(DashboardPage.DashboardPageElements.CompareExpensesLink).click();
+}

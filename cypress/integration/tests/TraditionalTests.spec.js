@@ -1,5 +1,6 @@
 import * as LoginActions from '../actions/LoginActions';
 import * as DashboardActions from '../actions/DashboardActions';
+import * as CompareExpensesActions from '../actions/CompareExpensesActions';
 
 const TestText = 'test';
 
@@ -31,10 +32,21 @@ describe('Traditional Test Suite', () => {
     });
   });
 
-  describe('Table Sort Test ', () => {
+  describe('Table Sort Test', () => {
     it('Ascending amounts ordering', () => {
       /* This cannot be automated because cypress
         does not properly handle iframes */
+    });
+  });
+
+  describe('Canvas Chart Test', () => {
+    it('Check canvas chart data', () => {
+      /* This cannot be automated because cypress
+        does not access to the chart values */
+    });
+    it('Add year to chart', () => {
+      /* This cannot be automated because cypress
+        does not access to the chart values */
     });
   });
 });
