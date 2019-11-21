@@ -1,1 +1,5 @@
-{}
+{
+  "projectId": "Semsee Automation",
+  "integrationFolder": "cypress/integration/tests",
+  "video": false
+}
