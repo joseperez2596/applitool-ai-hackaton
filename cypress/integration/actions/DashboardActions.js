@@ -6,6 +6,14 @@ export function checkDashboard() {
     .should('be.visible');
 }
 
+export function checkGifs() {
+  Object.entries(DashboardPage.DashboardPageElements.Gifs)
+    .forEach(([, value]) => {
+      cy.get(value)
+        .should('be.visible');
+  });
+}
+
 export function clickCompareExpensesLink() {
   cy.get(DashboardPage.DashboardPageElements.CompareExpensesLink).click();
 }

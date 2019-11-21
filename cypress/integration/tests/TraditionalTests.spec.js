@@ -1,6 +1,5 @@
 import * as LoginActions from '../actions/LoginActions';
 import * as DashboardActions from '../actions/DashboardActions';
-import * as CompareExpensesActions from '../actions/CompareExpensesActions';
 
 const TestText = 'test';
 
@@ -32,7 +31,7 @@ describe('Traditional Test Suite', () => {
     });
   });
 
-  describe('Table Sort Test ', () => {
+  describe('Table Sort Test', () => {
     it('Ascending amounts ordering', () => {
       LoginActions.login(TestText, TestText);
       DashboardActions.checkDashboard();
@@ -49,6 +48,14 @@ describe('Traditional Test Suite', () => {
     it('Add year to chart', () => {
       /* This cannot be automated because cypress
         does not access to the chart values */
+    });
+  });
+
+  describe('Dynamic Content Test', () => {
+    it('Ascending amounts ordering', () => {
+      cy.visit('https://demo.applitools.com/hackathonApp.html?showAd=true')
+      DashboardActions.checkDashboard();
+      DashboardActions.checkGifs();
     });
   });
 });
