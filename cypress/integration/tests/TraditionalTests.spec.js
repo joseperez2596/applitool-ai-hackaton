@@ -32,10 +32,12 @@ describe('Traditional Test Suite', () => {
     });
   });
 
-  describe('Table Sort Test', () => {
+  describe('Table Sort Test ', () => {
     it('Ascending amounts ordering', () => {
-      /* This cannot be automated because cypress
-        does not properly handle iframes */
+      LoginActions.login(TestText, TestText);
+      DashboardActions.checkDashboard();
+      DashboardActions.clickAmountsHeader();
+      DashboardActions.checkAmountsOrdering();
     });
   });
 
