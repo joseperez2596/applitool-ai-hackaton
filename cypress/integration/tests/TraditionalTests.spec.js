@@ -52,8 +52,9 @@ describe('Traditional Test Suite', () => {
   });
 
   describe('Dynamic Content Test', () => {
-    it('Ascending amounts ordering', () => {
-      cy.visit('https://demo.applitools.com/hackathonApp.html?showAd=true')
+    it('Assert gifs presence', () => {
+      cy.visit('https://demo.applitools.com/hackathon.html?showAd=true')
+      LoginActions.login(TestText, TestText);
       DashboardActions.checkDashboard();
       DashboardActions.checkGifs();
     });
