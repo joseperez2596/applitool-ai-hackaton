@@ -11,19 +11,23 @@ describe('Traditional Test Suite', () => {
 
   describe('Login Page UI Elements Test', () => {
     it('Login page elements check', () => {
-      LoginActions.checkLoginPage();
+      LoginActions.checkLoginPageElements();
+      LoginActions.checkLoginPageTexts();
     });
   });
 
   describe('Data-Driven Test', () => {
     it('Login with null username and password', () => {
       LoginActions.login(null, null);
+      LoginActions.checkErrorMessage('Please enter both username and password');
     });
     it('Login with null password', () => {
       LoginActions.login(TestText, null);
+      LoginActions.checkErrorMessage('Password must be present');
     });
     it('Login with null username', () => {
       LoginActions.login(null, TestText);
+      LoginActions.checkErrorMessage('Username must be present');
     });
     it('Successful Login', () => {
       LoginActions.login(TestText, TestText);
