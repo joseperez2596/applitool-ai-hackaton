@@ -16,7 +16,7 @@ export function checkLoginPage() {
 export function login(Username, Password) {
   if (Username === null & Password === null) {
     cy.get(LoginPage.LoginPageElements.LoginButtonSelector).click();
-    checkErrorMessage('Both Username and Password must be present ');
+    checkErrorMessage('Please enter both username and password');
   } else if (Password === null) {
     CommonActions.TypeText(LoginPage.LoginPageElements.UsernameFieldSelector, Username);
     cy.get(LoginPage.LoginPageElements.LoginButtonSelector).click();

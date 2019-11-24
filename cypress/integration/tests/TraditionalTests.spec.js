@@ -6,7 +6,7 @@ const TestText = 'test';
 describe('Traditional Test Suite', () => {
 
   beforeEach(() => {
-    cy.visit('https://demo.applitools.com/hackathon.html');
+    cy.visit('https://demo.applitools.com/hackathonV2.html');
   });
 
   describe('Login Page UI Elements Test', () => {
@@ -53,7 +53,7 @@ describe('Traditional Test Suite', () => {
 
   describe('Dynamic Content Test', () => {
     it('Assert gifs presence', () => {
-      cy.visit('https://demo.applitools.com/hackathon.html?showAd=true')
+      cy.visit('https://demo.applitools.com/hackathonV2.html?showAd=true')
       LoginActions.login(TestText, TestText);
       DashboardActions.checkDashboard();
       DashboardActions.checkGifs();
