@@ -1,13 +1,13 @@
-import * as LoginActions from '../actions/LoginActions';
-import * as DashboardActions from '../actions/DashboardActions';
-import * as CompareExpensesActions from '../actions/CompareExpensesActions';
+import {login} from '../actions/LoginActions';
+import {clickCompareExpensesLink, clickAmountsHeader} from '../actions/DashboardActions';
+import {clickAddNextYear} from '../actions/CompareExpensesActions';
 
 const TestText = 'test';
 
 describe('Visual AI Test Suite', () => {
 
   beforeEach(() => {
-    cy.visit('https://demo.applitools.com/hackathon.html');
+    cy.visit('https://demo.applitools.com/hackathonV2.html');
   });
 
   afterEach(() => {
@@ -37,19 +37,19 @@ describe('Visual AI Test Suite', () => {
     });
 
     it('Login with null username and password', () => {
-      LoginActions.login(null, null);
-      cy.eyesCheckWindow('Login Page with null username and password');
+      login(null, null);
+      cy.eyesCheckElement('Please enter both username and password');
     });
     it('Login with null password', () => {
-      LoginActions.login(TestText, null);
+      login(TestText, null);
       cy.eyesCheckWindow('Login Page with null password');
     });
     it('Login with null username', () => {
-      LoginActions.login(null, TestText);
+      login(null, TestText);
       cy.eyesCheckWindow('Login Page with null username');
     });
     it('Successful Login', () => {
-      LoginActions.login(TestText, TestText);
+      login(TestText, TestText);
       cy.eyesCheckWindow('Dashboard Page');
     });
   });
@@ -61,9 +61,9 @@ describe('Visual AI Test Suite', () => {
         testName: 'Table Sort Test',
         browser: { width: 800, height: 600 },
       });
-      LoginActions.login(TestText, TestText);
+      login(TestText, TestText);
       cy.eyesCheckWindow('Dashboard Page 1');
-      DashboardActions.clickAmountsHeader();
+      clickAmountsHeader();
       cy.eyesCheckWindow('Dashboard Page 2');
     });
   });
@@ -75,11 +75,11 @@ describe('Visual AI Test Suite', () => {
         testName: `Canvas Chart Test`,
         browser: { width: 800, height: 600 },
       });
-      LoginActions.login(TestText, TestText);
+      login(TestText, TestText);
       cy.eyesCheckWindow('Dashboard Page');
-      DashboardActions.clickCompareExpensesLink();
+      clickCompareExpensesLink();
       cy.eyesCheckWindow('Compare Expenses Page 1');
-      CompareExpensesActions.clickAddNextYear();
+      clickAddNextYear();
       cy.eyesCheckWindow('Compare Expenses Page 2');
     });
   });
@@ -91,9 +91,9 @@ describe('Visual AI Test Suite', () => {
         testName: 'Dynamic Content Test',
         browser: { width: 800, height: 600 },
       });
-      cy.visit('https://demo.applitools.com/hackathon.html?showAd=true');
+      cy.visit('https://demo.applitools.com/hackathonV2.html?showAd=true');
       cy.eyesCheckWindow('Login Page');
-      LoginActions.login(TestText, TestText);
+      login(TestText, TestText);
       cy.eyesCheckWindow('Dashboard Page');
     });
   });
