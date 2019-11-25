@@ -6,24 +6,28 @@ const TestText = 'test';
 describe('Traditional Test Suite', () => {
 
   beforeEach(() => {
-    cy.visit('https://demo.applitools.com/hackathon.html');
+    cy.visit('https://demo.applitools.com/hackathonV2.html');
   });
 
   describe('Login Page UI Elements Test', () => {
     it('Login page elements check', () => {
-      LoginActions.checkLoginPage();
+      LoginActions.checkLoginPageElements();
+      LoginActions.checkLoginPageTexts();
     });
   });
 
   describe('Data-Driven Test', () => {
     it('Login with null username and password', () => {
       LoginActions.login(null, null);
+      LoginActions.checkErrorMessage('Please enter both username and password');
     });
     it('Login with null password', () => {
       LoginActions.login(TestText, null);
+      LoginActions.checkErrorMessage('Password must be present');
     });
     it('Login with null username', () => {
       LoginActions.login(null, TestText);
+      LoginActions.checkErrorMessage('Username must be present');
     });
     it('Successful Login', () => {
       LoginActions.login(TestText, TestText);
@@ -53,7 +57,7 @@ describe('Traditional Test Suite', () => {
 
   describe('Dynamic Content Test', () => {
     it('Assert gifs presence', () => {
-      cy.visit('https://demo.applitools.com/hackathon.html?showAd=true')
+      cy.visit('https://demo.applitools.com/hackathonV2.html?showAd=true')
       LoginActions.login(TestText, TestText);
       DashboardActions.checkDashboard();
       DashboardActions.checkGifs();

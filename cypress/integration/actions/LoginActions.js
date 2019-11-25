@@ -1,34 +1,38 @@
 import * as LoginPage from '../elements/LoginPageElements';
 import * as CommonActions from './CommonActions';
 
-function checkErrorMessage(ExpectedError) {
+export function checkErrorMessage(ExpectedError) {
   cy.get(LoginPage.ErrorMessageSelector)
     .should('have.text', ExpectedError);
 }
 
-export function checkLoginPage() {
-  Object.entries(LoginPage.LoginPageElements)
-    .forEach(([, selector]) => {
-      cy.get(selector).should('be.visible');
+export function checkLoginPageTexts() {
+  Object.entries(LoginPage.LoginPageElements.LoginPageElementsWithText)
+    .forEach(([, element]) => {
+      cy.get(element.Selector).should('have.text', element.text);
+    });
+}
+
+export function checkLoginPageElements() {
+  Object.entries(LoginPage.LoginPageElements.AllLoginPageElements)
+    .forEach(([, element]) => {
+      cy.get(element.Selector).should('be.visible');
     });
 }
 
 export function login(Username, Password) {
   if (Username === null & Password === null) {
-    cy.get(LoginPage.LoginPageElements.LoginButtonSelector).click();
-    checkErrorMessage('Both Username and Password must be present ');
+    cy.get(LoginPage.LoginPageElements.AllLoginPageElements.LoginButton.Selector).click();
   } else if (Password === null) {
-    CommonActions.TypeText(LoginPage.LoginPageElements.UsernameFieldSelector, Username);
-    cy.get(LoginPage.LoginPageElements.LoginButtonSelector).click();
-    checkErrorMessage('Password must be present');
+    CommonActions.TypeText(LoginPage.LoginPageElements.AllLoginPageElements.UsernameField.Selector, Username);
+    cy.get(LoginPage.LoginPageElements.AllLoginPageElements.LoginButton.Selector).click();
   } else if (Username === null) {
-    CommonActions.TypeText(LoginPage.LoginPageElements.PasswordFieldSelector, Password);
-    cy.get(LoginPage.LoginPageElements.UsernameFieldSelector).clear();
-    cy.get(LoginPage.LoginPageElements.LoginButtonSelector).click();
-    checkErrorMessage('Username must be present');
+    CommonActions.TypeText(LoginPage.LoginPageElements.AllLoginPageElements.PasswordField.Selector, Password);
+    cy.get(LoginPage.LoginPageElements.AllLoginPageElements.UsernameField.Selector).clear();
+    cy.get(LoginPage.LoginPageElements.AllLoginPageElements.LoginButton.Selector).click();
   } else {
-    CommonActions.TypeText(LoginPage.LoginPageElements.UsernameFieldSelector, Username);
-    CommonActions.TypeText(LoginPage.LoginPageElements.PasswordFieldSelector, Password);
-    cy.get(LoginPage.LoginPageElements.LoginButtonSelector).click();
+    CommonActions.TypeText(LoginPage.LoginPageElements.AllLoginPageElements.UsernameField.Selector, Username);
+    CommonActions.TypeText(LoginPage.LoginPageElements.AllLoginPageElements.PasswordField.Selector, Password);
+    cy.get(LoginPage.LoginPageElements.AllLoginPageElements.LoginButton.Selector).click();
   }
 }
